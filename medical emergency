@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MedFund App</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f4f4;
+            text-align: center;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            margin: 50px auto;
+            width: 300px;
+            border-radius: 10px;
+        }
+        button {
+            padding: 10px;
+            margin: 10px;
+            width: 100%;
+            background: green;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        input {
+            padding: 10px;
+            width: 90%;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>💊 MedFund</h2>
+
+    <h3>Wallet Balance</h3>
+    <p id="balance">₹0</p>
+
+    <input type="number" id="amount" placeholder="Enter amount">
+
+    <button onclick="addMoney()">Add Money</button>
+    <button onclick="requestEmergency()">Emergency Request</button>
+
+    <p id="message"></p>
+</div>
+
+<script>
+let balance = 0;
+
+function addMoney() {
+    let amt = document.getElementById("amount").value;
+    balance += Number(amt);
+    document.getElementById("balance").innerText = "₹" + balance;
+}
+
+function requestEmergency() {
+    if (balance > 0) {
+        document.getElementById("message").innerText =
+            "✅ Hospital requested ₹" + balance + " successfully!";
+        balance = 0;
+        document.getElementById("balance").innerText = "₹0";
+    } else {
+        document.getElementById("message").innerText =
+            "❌ No funds available!";
+    }
+}
+</script>
+
+</body>
+</html>
